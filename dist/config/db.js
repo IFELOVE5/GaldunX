@@ -13,19 +13,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+// Async function to connect to the MongoDB database
 const dbConnect = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const MONGO_URL = process.env.MONGO_URL;
+        const MONGO_URL = process.env.MONGO_URL; // Get MongoDB URL from environment variables
         const connectOptions = {
-            autoIndex: true,
-            serverSelectionTimeoutMS: 5000,
+            autoIndex: true, // Automatically build indexes
+            serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds if unable to connect
         };
-        yield mongoose_1.default.connect(MONGO_URL, connectOptions);
+        yield mongoose_1.default.connect(MONGO_URL, connectOptions); // Establish connection
         console.log('MongoDB connected successfully!');
     }
     catch (error) {
         console.error('MongoDB connection error:', error);
-        process.exit(1);
+        process.exit(1); // Exit process on connection failure
     }
 });
 exports.default = dbConnect;

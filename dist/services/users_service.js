@@ -15,17 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userService = void 0;
 const user_1 = __importDefault(require("../models/user"));
 class UserService {
+    // Retrieve all users, selecting only username and email fields
     getAllUsers() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 return yield user_1.default.find().select('username email');
             }
             catch (error) {
-                console.error(' Error fetching users:', error);
+                console.error('Error fetching users:', error);
                 throw new Error('Unable to retrieve users');
             }
         });
     }
+    // Update user details by ID and return the updated user
     updateUser(userId, updateData) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -38,6 +40,7 @@ class UserService {
             }
         });
     }
+    // Delete user by ID and return the deleted user
     deleteUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

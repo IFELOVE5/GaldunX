@@ -24,22 +24,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
+// Schema for the User model
 const userSchema = new mongoose_1.Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true
-    },
-    password: {
-        type: String,
-        required: true
-    }
-}, { timestamps: true });
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true, lowercase: true },
+    password: { type: String, required: true }
+}, { timestamps: true } // Automatically manage createdAt and updatedAt
+);
+// Create and export the User model
 const User = mongoose_1.default.model('User', userSchema);
 exports.default = User;

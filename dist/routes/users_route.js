@@ -10,5 +10,5 @@ const jwt_1 = require("../middleware/jwt");
 userRoute.get('/all', jwt_1.auth, users_controller_1.getAllUsers);
 userRoute.post(`/register`, users_controller_1.registerUser);
 userRoute.post(`/login`, users_controller_1.userLogin);
-userRoute.delete(`/delete/:id`, users_controller_1.deleteUserById);
+userRoute.delete(`/delete/:id`, jwt_1.auth, users_controller_1.deleteUserById);
 exports.default = userRoute;

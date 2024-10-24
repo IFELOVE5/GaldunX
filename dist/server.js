@@ -16,16 +16,17 @@ const app_1 = __importDefault(require("./app"));
 const db_1 = __importDefault(require("./config/db"));
 const PORT = process.env.PORT || 3000;
 console.log('Attempting to start server...');
+// Function to initialize the server
 const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, db_1.default)();
+        yield (0, db_1.default)(); // Establish database connection
         app_1.default.listen(PORT, () => {
-            console.log(`Server running on port:${PORT}`);
+            console.log(`Server running on port: ${PORT}`);
         });
     }
     catch (error) {
         console.error('Failed to start server:', error);
-        process.exit(1);
+        process.exit(1); // Exit process on failure
     }
 });
 startServer();
